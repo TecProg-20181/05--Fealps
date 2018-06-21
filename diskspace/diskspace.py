@@ -74,15 +74,18 @@ def print_tree(file_tree, file_tree_node, path, largest_size, total_size,
             print_tree(file_tree, file_tree[child], child, largest_size,
                        total_size, depth + 1)
 
+def command_line(abs_directory, depth):
+        cmd = 'du '
+        if depth != -1:
+            cmd += '-d {} '.format(depth)
+
+        cmd += abs_directory
+        return cmd
 
 def show_space_list(directory='.', depth=-1, order=True):
     abs_directory = os.path.abspath(directory)
 
-    cmd = 'du '
-    if depth != -1:
-        cmd += '-d {} '.format(depth)
-
-    cmd += abs_directory
+    cmd = command_line(abs_directory, depth)
     raw_output = subprocess_check_output(cmd)
 
     total_size = -1
