@@ -3,6 +3,9 @@ import unittest
 import random
 import contextlib
 import sys
+import argparse
+from mock import patch, MagicMock
+
 
 class test_subprocess_check_output(unittest.TestCase):
     def test_subprocess_check(self):
@@ -130,8 +133,16 @@ class test_show_space_list(unittest.TestCase):
         cmd = diskspace.command_line(path, depth)
         self.assertIsInstance(cmd,str)
 
-    pass
-class test_arguments(unittest.TestCase):
+class test_main_case(unittest.TestCase):
+    """
+    def test_order(self):
+        diskspace.args.directory = MagicMock(return_value = "test_diskspace.py")
+        diskspace.args.depth = MagicMock(return_value = 1)
+        diskspace.args.order = MagicMock(return_value = "desc")
+        diskspace.subprocess_check_output.file_size = MagicMock(value = 12)
+        run = diskspace.main()
+        self.assertIsInstance(run,str)
+        """
     pass
 
 suite = unittest.TestLoader().loadTestsFromTestCase(test_subprocess_check_output)
@@ -142,5 +153,5 @@ suite = unittest.TestLoader().loadTestsFromTestCase(test_print_tree)
 unittest.TextTestRunner(verbosity=2).run(suite)
 suite = unittest.TestLoader().loadTestsFromTestCase(test_show_space_list)
 unittest.TextTestRunner(verbosity=2).run(suite)
-suite = unittest.TestLoader().loadTestsFromTestCase(test_arguments)
+suite = unittest.TestLoader().loadTestsFromTestCase(test_main_case)
 unittest.TextTestRunner(verbosity=2).run(suite)
