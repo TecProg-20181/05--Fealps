@@ -33,3 +33,12 @@ optional arguments:
                         Specifies the folder maximum depth to be analyzed
   -t, --tree-view       Display the result in a tree mode
 ```
+testing
+=====
+```
+To run the test_diskspace.py open the folder where test_diskspace is in using the
+terminal and run the following command:
+
+          python -m unittest  test_diskspace
+
+```
